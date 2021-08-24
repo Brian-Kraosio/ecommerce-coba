@@ -15918,6 +15918,70 @@
      
 }
 
+    namespace Illuminate\Database\Schema { 
+            /**
+     * 
+     *
+     */ 
+        class Blueprint {
+                    /**
+         * 
+         *
+         * @see \Kalnoy\Nestedset\NestedSetServiceProvider::register()
+         * @static 
+         */ 
+        public static function nestedSet()
+        {
+                        return \Illuminate\Database\Schema\Blueprint::nestedSet();
+        }
+                    /**
+         * 
+         *
+         * @see \Kalnoy\Nestedset\NestedSetServiceProvider::register()
+         * @static 
+         */ 
+        public static function dropNestedSet()
+        {
+                        return \Illuminate\Database\Schema\Blueprint::dropNestedSet();
+        }
+         
+    }
+     
+}
+
+    namespace Illuminate\Routing { 
+            /**
+     * 
+     *
+     */ 
+        class Route {
+                    /**
+         * 
+         *
+         * @see \Spatie\Permission\PermissionServiceProvider::registerMacroHelpers()
+         * @param mixed $roles
+         * @static 
+         */ 
+        public static function role($roles = [])
+        {
+                        return \Illuminate\Routing\Route::role($roles);
+        }
+                    /**
+         * 
+         *
+         * @see \Spatie\Permission\PermissionServiceProvider::registerMacroHelpers()
+         * @param mixed $permissions
+         * @static 
+         */ 
+        public static function permission($permissions = [])
+        {
+                        return \Illuminate\Routing\Route::permission($permissions);
+        }
+         
+    }
+     
+}
+
 
 namespace  { 
             class App extends \Illuminate\Support\Facades\App {}

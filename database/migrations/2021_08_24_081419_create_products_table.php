@@ -14,7 +14,18 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->foreignUuid('categories_id')->constrained();
+            $table->foreignUuid('shop_id')->constrained();
+            $table->foreignUuid('type_id')->constrained();
+            $table->string('name');
+            $table->decimal('price' , 13, 7);
+            $table->integer('quantity');
+            $table->integer('views');
+            $table->decimal('discount_price', 13, 7)->default(0);
+            $table->boolean('discount')->default(false);
+            $table->boolean('status')->default(true);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -14,7 +14,10 @@ class CreateProductTypesTable extends Migration
     public function up()
     {
         Schema::create('product_types', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->foreignUuid('categories_id')->constrained();
+            $table->string('name');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
