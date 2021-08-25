@@ -17,7 +17,8 @@ class CreateProductsTable extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('categories_id')->constrained();
             $table->foreignUuid('shop_id')->constrained();
-            $table->foreignUuid('type_id')->constrained();
+            $table->foreignUuid('type_id')->constrained('product_types');
+            $table->string('slug');
             $table->string('name');
             $table->decimal('price' , 13, 7);
             $table->integer('quantity');
