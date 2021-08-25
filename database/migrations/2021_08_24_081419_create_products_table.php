@@ -15,7 +15,7 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('categories_id')->constrained();
+//            $table->foreignUuid('categories_id')->constrained();
             $table->foreignUuid('shop_id')->constrained();
             $table->foreignUuid('type_id')->constrained('product_types');
             $table->string('slug');
@@ -23,8 +23,8 @@ class CreateProductsTable extends Migration
             $table->decimal('price' , 13, 7);
             $table->integer('quantity');
             $table->integer('views');
-            $table->decimal('discount_price', 13, 7)->default(0);
             $table->boolean('discount')->default(false);
+            $table->decimal('discount_price', 13, 7)->default(0);
             $table->boolean('status')->default(true);
             $table->softDeletes();
             $table->timestamps();
