@@ -18,7 +18,7 @@ class CreateCheckoutItemsTable extends Migration
             $table->foreignUuid('product_id')->constrained();
             $table->foreignUuid('checkout_id')->constrained();
             $table->decimal('item_price',13,7);
-            $table->decimal('item_quantity',13,7);
+            $table->integer('item_quantity');
             $table->timestamps();
         });
     }

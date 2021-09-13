@@ -3,6 +3,9 @@
 namespace Database\Factories;
 
 use App\Models\Shipping;
+use App\Models\ShippingMethod;
+use App\Models\Shop;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ShippingFactory extends Factory
@@ -22,7 +25,10 @@ class ShippingFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'shop_id' => Shop::all()->random()->id,
+            'user_id' => User::all()->random()->id,
+            'shipping_method_id' => ShippingMethod::all()->random()->id,
+            'total_price' => $this->faker->randomDigitNotZero()
         ];
     }
 }

@@ -17,7 +17,7 @@ class CreateReviewsTable extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('product_id')->constrained();
             $table->foreignUuid('user_id')->constrained();
-            $table->integer('ratings')->default(5);
+            $table->integer('rating')->default(5);
             $table->string('description');
             $table->timestamps();
         });

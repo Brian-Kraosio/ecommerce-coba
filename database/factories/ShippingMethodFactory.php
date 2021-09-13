@@ -22,7 +22,8 @@ class ShippingMethodFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->word(),
+            'base_price' => $this->faker->randomDigitNotZero(),
         ];
     }
 }

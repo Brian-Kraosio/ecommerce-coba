@@ -5,16 +5,14 @@ namespace App\Models;
 use App\Traits\UuidIndex;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Kalnoy\Nestedset\NodeTrait;
 
 class Category extends Model
 {
-    use HasFactory, UuidIndex;
+    use HasFactory, UuidIndex, NodeTrait;
 
     public function product(){
-        return $this->hasOne(Product::class);
+        return $this->hasOne(Product::class, 'category_id');
     }
 
-    public function type(){
-        return $this->hasOne(ProductType::class);
-    }
 }

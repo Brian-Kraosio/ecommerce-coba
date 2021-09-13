@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Checkout;
+use App\Models\Shipping;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CheckoutFactory extends Factory
@@ -22,7 +23,9 @@ class CheckoutFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'shipping_id' => Shipping::all()->random()->id,
+            'subtotal_price' => $this->faker->randomDigit(),
+            'total_price' => $this->faker->randomDigitNotZero()
         ];
     }
 }
