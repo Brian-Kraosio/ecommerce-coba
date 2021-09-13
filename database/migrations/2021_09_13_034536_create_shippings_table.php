@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReviewsTable extends Migration
+class CreateShippingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateReviewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reviews', function (Blueprint $table) {
+        Schema::create('shippings', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('product_id')->constrained();
             $table->foreignUuid('user_id')->constrained();
-            $table->integer('ratings')->default(5);
-            $table->string('description');
+            $table->foreignUuid('shop_id')->constrained();
+            $table->foreignUuid('shipping_method_id')->constrained('shipping_methods');
+            $table->decimal('total_price',13,7);
+            $table->string('estimated_time');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateReviewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reviews');
+        Schema::dropIfExists('shippings');
     }
 }

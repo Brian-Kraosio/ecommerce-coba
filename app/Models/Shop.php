@@ -25,4 +25,8 @@ class Shop extends Model
     public function product(){
         return $this->hasMany(Product::class);
     }
+
+    public function shipping(){
+        return $this->hasMany(Shipping::class);
+    }
 }

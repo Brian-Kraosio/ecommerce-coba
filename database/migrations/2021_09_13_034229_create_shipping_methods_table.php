@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReviewsTable extends Migration
+class CreateShippingMethodsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateReviewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reviews', function (Blueprint $table) {
+        Schema::create('shipping_methods', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('product_id')->constrained();
-            $table->foreignUuid('user_id')->constrained();
-            $table->integer('ratings')->default(5);
-            $table->string('description');
+            $table->string('name');
+            $table->decimal('base_price',13, 7);
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateReviewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reviews');
+        Schema::dropIfExists('shipping_methods');
     }
 }

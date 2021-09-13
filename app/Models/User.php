@@ -60,4 +60,8 @@ class User extends Authenticatable
     public function review(){
         return $this->hasMany(Review::class);
     }
+
+    public function shipping(){
+        return $this->hasMany(Shipping::class);
+    }
 }
