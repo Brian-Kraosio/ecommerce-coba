@@ -19,10 +19,6 @@ class Product extends Model
         'discount' => 'boolean'
     ];
 
-    public function type(){
-        return $this->belongsTo(ProductType::class, 'type_id');
-    }
-
     public function category(){
         return $this->belongsTo(Category::class);
     }
@@ -33,6 +29,10 @@ class Product extends Model
 
     public function cart(){
         return $this->hasMany(Cart::class);
+    }
+
+    public function review(){
+        return $this->hasMany(Review::class);
     }
 
 
