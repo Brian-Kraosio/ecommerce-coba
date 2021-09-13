@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductTypesTable extends Migration
+class CreateCartsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateProductTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_types', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-//            $table->foreignUuid('categories_id')->constrained();
-            $table->string('name');
-            $table->softDeletes();
+        Schema::create('carts', function (Blueprint $table) {
+            $table->uuid('id');
+            $table->foreignUuid('user_id')->constrained();
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateProductTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_types');
+        Schema::dropIfExists('carts');
     }
 }
