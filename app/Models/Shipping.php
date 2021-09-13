@@ -21,4 +21,8 @@ class Shipping extends Model
     public function shop(){
         return $this->belongsTo(Shop::class);
     }
+
+    public function checkout(){
+        return $this->hasMany(Checkout::class);
+    }
 }

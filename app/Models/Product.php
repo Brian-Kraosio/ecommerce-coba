@@ -35,5 +35,7 @@ class Product extends Model
         return $this->hasMany(Review::class);
     }
 
-
+    public function checkout(){
+        return $this->hasMany(CheckoutItem::class);
+    }
 }
