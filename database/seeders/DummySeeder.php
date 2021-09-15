@@ -14,6 +14,7 @@ use App\Models\Shipping;
 use App\Models\ShippingMethod;
 use App\Models\Shop;
 use App\Models\User;
+use App\Models\UserAddress;
 use Illuminate\Database\Seeder;
 
 class DummySeeder extends Seeder
@@ -46,6 +47,8 @@ class DummySeeder extends Seeder
         Checkout::factory(5)->has(CheckoutItem::factory(10), 'item')->create();
 
         Review::factory(15)->create();
+
+        UserAddress::factory(10)->create();
 
     }
 }

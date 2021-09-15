@@ -25,7 +25,7 @@ class UserAddressFactory extends Factory
         return [
             'user_id' => User::all()->random()->id,
             'name' => $this->faker->word(),
-            'description' => $this->faker->sentence(),
+            'description' => $this->faker->address(),
         ];
     }
 }
