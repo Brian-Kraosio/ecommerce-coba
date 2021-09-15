@@ -15,6 +15,7 @@ class ProductController extends Controller
         return ProductResource::collection(
             QueryBuilder::for(Product::class)
                 ->allowedSorts('created_at', 'category_id')
+                ->with(['category', 'review.user'])
                 ->cursorPaginate(10)
         );
     }

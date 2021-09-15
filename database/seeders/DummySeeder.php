@@ -27,26 +27,24 @@ class DummySeeder extends Seeder
     public function run()
     {
         User::factory(5)
-            ->has(Shop::factory(3),'shop')
+            ->has(Shop::factory(random_int(1,2)),'shop')
             ->create();
 
         Category::factory(5)
-            ->has(Product::factory(10),'product')
+            ->has(Product::factory(random_int(5,10))
+                ->has(Review::factory(random_int(2,10)),'review'),'product')
             ->create();
 
-        User::factory(3)->has(Cart::factory(3), 'cart')->create();
+        User::factory(3)
+            ->has(Cart::factory(1)
+                ->has(CartItem::factory(random_int(2,10)), 'item'), 'cart')->create();
 
-        Cart::factory(10)
-            ->has(CartItem::factory(20), 'item')
-            ->create();
 
         ShippingMethod::factory(5)
-            ->has(Shipping::factory(10), 'shipping')
+            ->has(Shipping::factory(random_int(1,5)), 'shipping')
             ->create();
 
-        Checkout::factory(5)->has(CheckoutItem::factory(10), 'item')->create();
-
-        Review::factory(15)->create();
+        Checkout::factory(5)->has(CheckoutItem::factory(random_int(1,5)), 'item')->create();
 
         UserAddress::factory(10)->create();
 
