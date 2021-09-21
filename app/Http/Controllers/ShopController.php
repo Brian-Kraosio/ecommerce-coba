@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ShopResource;
+use App\Models\Shop;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class ShopController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        return ShopResource::collection(
+            QueryBuilder::for(Shop::class)
+                ->allowedSorts(['name'])
+                ->allowedFilters(['name'])
+                ->cursorPaginate(10)
+        );
     }
 
     /**
