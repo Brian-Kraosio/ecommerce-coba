@@ -27,7 +27,6 @@ class ShopFactory extends Factory
             'name' => $this->faker->word(),
             'address' => $this->faker->address(),
             'photo' => $this->faker->image(),
-            'status' => $this->faker->boolean()
         ];
     }
 }

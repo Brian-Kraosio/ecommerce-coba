@@ -16,6 +16,8 @@ class CartItemFactory extends Factory
      */
     protected $model = CartItem::class;
 
+
+
     /**
      * Define the model's default state.
      *
@@ -27,7 +29,6 @@ class CartItemFactory extends Factory
             'product_id' => Product::all()->random()->id,
             'cart_id' => Cart::all()->random()->id,
             'item_quantity' => $this->faker->numberBetween(1,10),
-            'item_price' => $this->faker->randomDigit(),
         ];
     }
 }

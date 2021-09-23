@@ -12,11 +12,17 @@ class Cart extends Model
 
     protected $table = 'carts';
 
-    public function userCart(){
+    public function user(){
         return $this->belongsTo(User::class);
     }
 
     public function item(){
         return $this->hasMany(CartItem::class);
+    }
+
+    protected function getTotalAttribute(){
+        return $this->item->map(function (CartItem $item) {
+            return $item['item_quantity'] * $item->product['price'];
+        });
     }
 }

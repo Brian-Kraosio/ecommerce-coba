@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Cart;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class CartResource extends JsonResource
@@ -10,10 +11,18 @@ class CartResource extends JsonResource
      * Transform the resource into an array.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
+     * @return array
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+
+//        return dd($this);
+        return [
+            'id' => $this['id'],
+            'user' => UserResource::make($this->whenLoaded('user')),
+            'cart_item' => CartItemResource::collection($this->whenLoaded('item')) ,
+            'status' => $this['status'],
+            'total' => $this['total']->sum()
+        ];
     }
 }

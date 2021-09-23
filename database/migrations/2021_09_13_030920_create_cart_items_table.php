@@ -18,7 +18,6 @@ class CreateCartItemsTable extends Migration
             $table->foreignUuid('product_id')->constrained();
             $table->foreignUuid('cart_id')->constrained();
             $table->integer('item_quantity');
-            $table->decimal('item_price',13,7);
             $table->timestamps();
         });
     }

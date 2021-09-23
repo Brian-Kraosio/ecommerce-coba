@@ -10,6 +10,11 @@ class CartItem extends Model
 {
     use HasFactory, UuidIndex;
 
+    protected $fillable = [
+        'item_quantity'
+    ];
+
+
     public function product(){
         return $this->belongsTo(Product::class);
     }
@@ -17,4 +22,7 @@ class CartItem extends Model
     public function cart(){
         return $this->belongsTo(Cart::class);
     }
+
+
+
 }

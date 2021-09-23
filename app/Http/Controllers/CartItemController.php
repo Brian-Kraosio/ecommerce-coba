@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CartItemResource;
 use App\Models\CartItem;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class CartItemController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        return CartItemResource::collection(
+            QueryBuilder::for(CartItem::class)
+                ->allowedFilters(['cart_id','product_id'])
+                ->with(['product.category'])
+                ->cursorPaginate()
+        );
     }
 
     /**

@@ -2,13 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\BaseResponse\BaseResponse;
 use App\Http\Resources\ShopResource;
 use App\Models\Shop;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class ShopController extends Controller
 {
+
+    public function shop(User $user, Request $request){
+        $request->validate([
+           'name' => "required",
+            'address' => "required"
+        ]);
+
+
+        return BaseResponse::make(Shop::create([
+            'user_id' => auth()->id(),
+            'name' => $request->get('name'),
+            'address' => $request->get('address'),
+            'photo' => $request->get('photo'),
+        ]));
+    }
 
     public function index()
     {

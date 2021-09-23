@@ -2,29 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CartResource;
 use App\Models\Cart;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class CartController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+
+
+        return CartResource::collection(
+            QueryBuilder::for(Cart::class)
+                ->allowedFilters(['user_id'])
+                ->with(['user', 'item.product.category'])
+                ->cursorPaginate(10)
+        );
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+//
     }
 
     /**
