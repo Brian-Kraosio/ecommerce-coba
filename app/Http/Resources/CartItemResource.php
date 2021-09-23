@@ -19,8 +19,6 @@ class CartItemResource extends JsonResource
             'product' => ProductResource::make($this->whenLoaded('product')),
             'cart_id' => $this['cart_id'],
             'item_quantity' => $this['item_quantity'],
-            'item_price' => $this['item_price'],
-            'total' => $this['total']
         ];
     }
 }

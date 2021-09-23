@@ -24,7 +24,6 @@ class CartFactory extends Factory
     {
         return [
             'user_id' => User::all()->random()->id,
-            'total_price' => $this->faker->randomDigit()
         ];
     }
 }

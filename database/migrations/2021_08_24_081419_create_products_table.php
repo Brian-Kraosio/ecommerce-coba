@@ -20,11 +20,8 @@ class CreateProductsTable extends Migration
             $table->string('slug');
             $table->string('name');
             $table->decimal('price' , 13, 7);
-            $table->integer('quantity');
-            $table->integer('views');
-            $table->boolean('discount')->default(false);
-            $table->decimal('discount_price', 13, 7)->default(0);
-            $table->boolean('status')->default(true);
+            $table->integer('stock')->nullable();
+            $table->boolean('availability')->default(true);
             $table->softDeletes();
             $table->timestamps();
         });

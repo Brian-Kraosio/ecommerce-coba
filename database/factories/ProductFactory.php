@@ -30,11 +30,8 @@ class ProductFactory extends Factory
             'name' => $this->faker->word(),
             'slug' => $this->faker->slug(),
             'price' => $this->faker->randomDigitNotNull(),
-            'quantity' => $this->faker->randomDigitNotNull(),
-            'views' => $this->faker->randomDigitNotNull(),
-            'discount' => $this->faker->boolean(),
-            'discount_price' => $this->faker->randomDigitNotNull(),
-            'status' => $this->faker->boolean()
+            'stock' => $this->faker->randomDigitNotNull(),
+            'availability' => $this->faker->boolean()
         ];
     }
 }

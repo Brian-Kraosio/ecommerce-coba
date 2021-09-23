@@ -21,7 +21,6 @@ class CartResource extends JsonResource
             'id' => $this['id'],
             'user' => UserResource::make($this->whenLoaded('user')),
             'cart_item' => CartItemResource::collection($this->whenLoaded('item')) ,
-            'status' => $this['status'],
             'total' => $this['total']->sum()
         ];
     }
