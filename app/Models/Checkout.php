@@ -10,7 +10,7 @@ class Checkout extends Model
 {
     use HasFactory, UuidIndex;
 
-    public function item(){
+    public function items(){
         return $this->hasMany(CheckoutItem::class);
     }
 

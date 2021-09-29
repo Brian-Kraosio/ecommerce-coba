@@ -11,7 +11,7 @@ class ShippingMethod extends Model
     use HasFactory, UuidIndex;
 
 
-    public function shipping(){
+    public function shippings(){
         return $this->hasMany(Shipping::class);
     }
 }

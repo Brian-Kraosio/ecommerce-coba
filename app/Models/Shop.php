@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\UuidIndex;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Shop extends Model
 {
@@ -22,11 +23,34 @@ class Shop extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function product(){
+    public function products(){
         return $this->hasMany(Product::class);
     }
 
-    public function shipping(){
+    public function shippings(){
         return $this->hasMany(Shipping::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function (Model $model){
+            $slug = Str::slug($model['name']);
+            $model['slug'] = $slug;
+//            $allSlugs = self::where('slug', 'like', $slug . '%')->get('slug');
+//            if (!$allSlugs->contains('slug', $slug)){
+//                $model['slug'] = $slug;
+//            } else{
+//                for ($i = 1; $i<=10; $i++){
+//                    $newSlug = $slug . '-' . $i;
+//                    if (!$allSlugs->contains('slug', $newSlug)){
+//                        $model['slug']=$newSlug;
+//                    }
+//                }
+//                $newSlug = $slug . '-' . $model->shop['name'];
+//                $model['slug'] = $newSlug;
+//            }
+        });
     }
 }

@@ -14,7 +14,7 @@ class ShopController extends Controller
 
     public function shop(User $user, Request $request){
         $request->validate([
-           'name' => "required",
+           'name' => "required|unique:shops",
             'address' => "required"
         ]);
 

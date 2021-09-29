@@ -45,11 +45,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function shop(){
+    public function shops(){
         return $this->hasMany(Shop::class);
     }
 
-    public function cart(){
+    public function carts(){
         return $this->hasMany(Cart::class);
     }
 
@@ -57,11 +57,11 @@ class User extends Authenticatable
         return $this->hasMany(UserAddress::class);
     }
 
-    public function review(){
+    public function reviews(){
         return $this->hasMany(Review::class);
     }
 
-    public function shipping(){
+    public function shippings(){
         return $this->hasMany(Shipping::class);
     }
 }

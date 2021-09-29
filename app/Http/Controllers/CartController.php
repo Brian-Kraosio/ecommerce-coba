@@ -17,7 +17,7 @@ class CartController extends Controller
         return CartResource::collection(
             QueryBuilder::for(Cart::class)
                 ->allowedFilters(['user_id'])
-                ->with(['user', 'item.product.category'])
+                ->with(['user', 'items.product.category'])
                 ->cursorPaginate(10)
         );
     }

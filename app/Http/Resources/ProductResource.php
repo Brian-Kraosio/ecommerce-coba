@@ -21,7 +21,7 @@ class ProductResource extends JsonResource
             'slug' => $this['slug'],
             'name' => $this['name'],
             'price' => $this['price'],
-            'stock' => $this['quantity'],
+            'stock' => $this['stock'],
             'availability' => $this['availability'],
             'created_at' => $this['created_at'],
             'review' => ReviewResource::collection($this->whenLoaded('review'))

@@ -16,12 +16,12 @@ class Cart extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function item(){
+    public function items(){
         return $this->hasMany(CartItem::class);
     }
 
     protected function getTotalAttribute(){
-        return $this->item->map(function (CartItem $item) {
+        return $this->items->map(function (CartItem $item) {
             return $item['item_quantity'] * $item->product['price'];
         });
     }

@@ -11,8 +11,8 @@ class Category extends Model
 {
     use HasFactory, UuidIndex, NodeTrait;
 
-    public function product(){
-        return $this->hasOne(Product::class, 'category_id');
+    public function products(){
+        return $this->hasMany(Product::class, 'category_id');
     }
 
 }
