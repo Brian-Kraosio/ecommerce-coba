@@ -16,10 +16,12 @@ class ShopResource extends JsonResource
     {
         return [
             'id' => $this['id'],
+            'owner' => UserResource::make($this->whenLoaded('owner')),
             'name' => $this['name'],
-//            'address' => $this['address'],
+            'domain' => $this['domain'],
+            'address' => $this['address'],
             'photo' => $this['photo'],
-            'status' => $this['status'],
+            'shop_status' => $this['shop_status'],
         ];
 
     }

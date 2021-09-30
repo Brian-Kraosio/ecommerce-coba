@@ -29,7 +29,7 @@ class ShopFactory extends Factory
             'domain' => $this->faker->slug(),
             'address' => $this->faker->address(),
             'photo' => $this->faker->image(),
-            'status' => $this->faker->randomElement(ShopStatusEnum::getValues())
+            'shop_status' => $this->faker->randomElement(ShopStatusEnum::getValues())
         ];
     }
 }

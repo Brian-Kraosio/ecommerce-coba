@@ -31,8 +31,8 @@ Route::apiResource('shop', ShopController::class)->only([
 Route::get('cart', [CartController::class, 'index']);
 Route::get('cart-item', [CartItemController::class, 'index']);
 
+Route::post('new-shop', [ShopController::class, 'store']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    Route::post('user/{user}/shop', [ShopController::class, 'shop']);
 
 });

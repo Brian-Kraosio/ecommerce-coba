@@ -12,15 +12,25 @@ class Shop extends Model
     use HasFactory, UuidIndex;
 
     protected $fillable = [
-        'user_id', 'name' , 'address', 'photo', 'status'
+        'user_id', 'name' , 'address', 'photo', 'shop_status', 'domain'
     ];
 
     protected $casts = [
         'status' => 'boolean',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function (Model $model){
+            $slug = Str::slug($model['name']);
+            $model['domain'] = $slug;
+        });
+    }
+
     public function owner(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function products(){
@@ -31,26 +41,5 @@ class Shop extends Model
         return $this->hasMany(Shipping::class);
     }
 
-    protected static function boot()
-    {
-        parent::boot();
 
-        static::creating(function (Model $model){
-            $slug = Str::slug($model['name']);
-            $model['domain'] = $slug;
-//            $allSlugs = self::where('slug', 'like', $slug . '%')->get('slug');
-//            if (!$allSlugs->contains('slug', $slug)){
-//                $model['slug'] = $slug;
-//            } else{
-//                for ($i = 1; $i<=10; $i++){
-//                    $newSlug = $slug . '-' . $i;
-//                    if (!$allSlugs->contains('slug', $newSlug)){
-//                        $model['slug']=$newSlug;
-//                    }
-//                }
-//                $newSlug = $slug . '-' . $model->shop['name'];
-//                $model['slug'] = $newSlug;
-//            }
-        });
-    }
 }

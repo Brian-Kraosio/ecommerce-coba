@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Classes\BaseResponse\BaseResponse;
+use App\Enums\ShopStatusEnum;
 use App\Http\Requests\StoreShop;
 use App\Http\Resources\ShopResource;
 use App\Models\Shop;
 use App\Models\User;
+use Faker\Provider\Base;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
 
@@ -28,6 +30,7 @@ class ShopController extends Controller
     {
         return ShopResource::collection(
             QueryBuilder::for(Shop::class)
+                ->with(['owner'])
                 ->allowedSorts(['name'])
                 ->allowedFilters(['name'])
                 ->cursorPaginate(10)
@@ -47,8 +50,10 @@ class ShopController extends Controller
 
     public function store(StoreShop $request)
     {
-        BaseResponse::make(Shop::create ($request->validated() + [
-                'user_id' => auth()->id()
+        BaseResponse::make(Shop::create($request->validated() + [
+//                'user_id' => auth()->id()
+                'user_id' => '9484bccd86fe4e2e8bfaac6a818e66e6',
+                'shop_status' => ShopStatusEnum::getValue('Closed')
             ]));
     }
 

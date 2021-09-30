@@ -10,6 +10,6 @@ use BenSampo\Enum\Enum;
  */
 final class ShopStatusEnum extends Enum
 {
-    const Open =   'Open';
     const Closed =   'Closed';
+    const Open =   'Open';
 }

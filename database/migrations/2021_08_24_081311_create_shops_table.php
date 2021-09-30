@@ -21,7 +21,7 @@ class CreateShopsTable extends Migration
             $table->string('domain');
             $table->string('address');
             $table->string('photo');
-            $table->enum('status', ShopStatusEnum::getValues());
+            $table->enum('shop_status', ShopStatusEnum::getValues());
             $table->softDeletes();
             $table->timestamps();
         });

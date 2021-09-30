@@ -15,7 +15,7 @@ class StoreShop extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -27,10 +27,9 @@ class StoreShop extends FormRequest
     {
         return [
             'name' => 'required|unique:shops',
-            'domain' => 'required',
             'address' => 'required',
             'photo' => 'nullable',
-            'status' => Rule::in(ShopStatusEnum::Closed),
+            'shop_status' => Rule::in(ShopStatusEnum::getValues())
         ];
     }
 }
