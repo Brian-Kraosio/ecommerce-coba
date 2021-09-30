@@ -37,7 +37,7 @@ class Shop extends Model
 
         static::creating(function (Model $model){
             $slug = Str::slug($model['name']);
-            $model['slug'] = $slug;
+            $model['domain'] = $slug;
 //            $allSlugs = self::where('slug', 'like', $slug . '%')->get('slug');
 //            if (!$allSlugs->contains('slug', $slug)){
 //                $model['slug'] = $slug;

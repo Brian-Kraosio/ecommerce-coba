@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Classes\BaseResponse\BaseResponse;
+use App\Http\Requests\StoreShop;
 use App\Http\Resources\ShopResource;
 use App\Models\Shop;
 use App\Models\User;
@@ -12,20 +13,16 @@ use Spatie\QueryBuilder\QueryBuilder;
 class ShopController extends Controller
 {
 
-    public function shop(User $user, Request $request){
-        $request->validate([
-           'name' => "required|unique:shops",
-            'address' => "required"
-        ]);
-
-
-        return BaseResponse::make(Shop::create([
-            'user_id' => auth()->id(),
-            'name' => $request->get('name'),
-            'address' => $request->get('address'),
-            'photo' => $request->get('photo'),
-        ]));
-    }
+//    public function shop(User $user, Request $request){
+//
+//
+//        return BaseResponse::make(Shop::create([
+//            'user_id' => auth()->id(),
+//            'name' => $request->get('name'),
+//            'address' => $request->get('address'),
+//            'photo' => $request->get('photo'),
+//        ]));
+//    }
 
     public function index()
     {
@@ -47,15 +44,12 @@ class ShopController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function store(StoreShop $request)
     {
-        //
+        BaseResponse::make(Shop::create ($request->validated() + [
+                'user_id' => auth()->id()
+            ]));
     }
 
     /**

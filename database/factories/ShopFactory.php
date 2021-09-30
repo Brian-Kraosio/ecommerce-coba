@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\ShopStatusEnum;
 use App\Models\Shop;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -25,9 +26,10 @@ class ShopFactory extends Factory
         return [
             'user_id' => User::all()->random()->id,
             'name' => $this->faker->word(),
-            'slug' => $this->faker->slug(),
+            'domain' => $this->faker->slug(),
             'address' => $this->faker->address(),
             'photo' => $this->faker->image(),
+            'status' => $this->faker->randomElement(ShopStatusEnum::getValues())
         ];
     }
 }
